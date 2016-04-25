@@ -113,39 +113,8 @@ class Controller(cmd.Cmd):
     do_q = do_quit
     do_dgr = do_display_graphs
 
-    def doctests(self):
-        """
-        >>> controller.do_load_file("test.txt")
-        File loaded
-        Good data: 0
-        Bad data: 3
-
-        >>> controller.do_display_good("")
-
-
-        >>> controller.do_display_bad("")
-        abc male 23000
-        def female 12000
-        ijk female 999
-
-        >>> controller.do_load_file("goodbadtest.csv")
-        File loaded
-        Good data: 19
-        Bad data: 3
-
-        >>> controller.do_load_file("")
-        No file/path entered
-
-        >>> controller.do_display_good("")
-        No data to display. Please load a file or run deserialize
-
-        >>> controller.do_display_bad("")
-        No data to display. Please load a file
-        """
-
 
 if __name__ == '__main__':
     controller = Controller()
-    doctest.testmod()
     controller.cmdloop()
 
