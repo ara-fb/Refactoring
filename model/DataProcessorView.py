@@ -3,7 +3,7 @@ from CmdFunction import *
 import doctest
 
 
-class Controller(cmd.Cmd):
+class CmdView(cmd.Cmd):
 
     cmdFunction = CmdFunction()
 
@@ -115,6 +115,6 @@ class Controller(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    controller = Controller()
-    controller.cmdloop()
+    view = CmdView()
+    view.cmdloop()
 
