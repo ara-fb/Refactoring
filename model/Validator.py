@@ -1,39 +1,39 @@
-from Person import *
+from model.Person import *
 import re
 
 
 class Validator:
 
     def __init__(self):
-        self._good_data = {}
-        self._bad_data = []
-        self._raw_data = None
+        self.__good_data = {}
+        self.__bad_data = []
+        self.__raw_data = None
 
     def set_raw_data(self, new_data):
-        self._raw_data = new_data
+        self.__raw_data = new_data
 
-    def to_obj(self, a_list):
+    def __to_obj(self, a_list):
         new_person = Person(a_list[0], a_list[1], a_list[2], a_list[3], a_list[4], a_list[5])
         return new_person
 
     def parse_data(self):
-        for i in self._raw_data:
+        for i in self.__raw_data:
             a_list = self.clean_input(i)
 
             if self.isvalid(a_list):
-                p = self.to_obj(a_list)
-                self._good_data.update({p.get_id(): p})
+                p = self.__to_obj(a_list)
+                self.__good_data.update({p.get_id(): p})
             else:
-                self._bad_data.append(i)
+                self.__bad_data.append(i)
 
     def export_good_data(self):
-        return self._good_data
+        return self.__good_data
 
     def export_bad_data(self):
-        return self._bad_data
+        return self.__bad_data
 
     def has_bad_data(self):
-        return len(self._bad_data) > 0
+        return len(self.__bad_data) > 0
 
     ###
         # clean methods
@@ -59,7 +59,6 @@ class Validator:
         if len(an_id) > 4:
             ex = len(an_id) - 4
             an_id = an_id[:-ex]
-
         return an_id
 
     @staticmethod
@@ -67,7 +66,6 @@ class Validator:
         if len(a_gender) > 1:
             ex = len(a_gender) - 1
             a_gender = a_gender[:-ex]
-
         return a_gender.title()
 
     @staticmethod
@@ -85,8 +83,8 @@ class Validator:
         return a_sale
 
     @staticmethod
-    def clean_bmi(an_index):
-        return an_index.title()
+    def clean_bmi(a_bmi):
+        return a_bmi.title()
 
     @staticmethod
     def clean_income(an_income):
@@ -154,17 +152,17 @@ class Validator:
         return False
 
     def print_bad_data(self):
-        for i in self._bad_data:
+        for i in self.__bad_data:
             print(i)
 
     def get_all_bad_data(self):
         result = ""
-        for i in self._bad_data:
+        for i in self.__bad_data:
             result += i + "\n"
         return result
 
     def empty_bad_data(self):
-        self._bad_data = []
+        self.__bad_data = []
 
     def get_bad_data_len(self):
-        return len(self._bad_data)
+        return len(self.__bad_data)
