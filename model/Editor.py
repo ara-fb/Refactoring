@@ -17,8 +17,6 @@ class Editor(object):
             self.validate(a_string)
         elif i == 'D' or i == 'd':
             self.remove_from_raw(a_string)
-        else:
-            self.edit_or_delete(a_string)
 
     def remove_from_raw(self, the_string):
         if the_string in self._raw_data:
