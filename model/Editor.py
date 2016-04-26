@@ -31,20 +31,15 @@ class Editor(object):
         if the_string in self._raw_data:
             self._raw_data.remove(the_string)
 
-    def __unpack_list(self, a_list, list_index):
-        if len(a_list) > list_index:
-            return a_list[list_index]
-        else:
-            return ""
+    def __unpack_list(self, a_list):
+        total_fields = 6
+        for index in range(len(a_list), total_fields):
+            a_list.append("")
+        return a_list[0], a_list[1], a_list[2], a_list[3], a_list[4], a_list[5]
 
     def validate(self, a_string):
         list_ = Validator.clean_input(a_string)
-        id_ = list_[0]
-        gender = self.__unpack_list(self, list_, 1)
-        age = self.__unpack_list(self, list_, 2)
-        sales = self.__unpack_list(self, list_, 3)
-        bmi = self.__unpack_list(self, list_, 4)
-        income = self.__unpack_list(self, list_, 5)
+        id_, gender, age, sales, bmi, income = self.__unpack_list(list_)
 
         while not Validator.has_valid_id(id_):
             id_ = Validator.clean_id(self.set_new_value(id_, "A123", "id"))
