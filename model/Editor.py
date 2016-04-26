@@ -12,7 +12,6 @@ class Editor(object):
         self._raw_data = new_data
 
     def edit_or_delete(self, a_string, action):
-        action = action.upper()
         if action == 'E':
             self.validate(a_string)
         elif action == 'D':

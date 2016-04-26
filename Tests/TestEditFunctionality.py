@@ -13,6 +13,8 @@ class TestEditFunctionality(unittest.TestCase):
         self.mock_edit = editor.edit
         editor.edit_or_delete = MagicMock()
         self.edit_or_delete = editor.edit_or_delete
+        editor.set_new_value = MagicMock()
+        self.mock
 
 
     def test_edit(self):
