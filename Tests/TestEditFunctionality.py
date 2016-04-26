@@ -31,7 +31,6 @@ class TestEditFunctionality(unittest.TestCase):
         self.assertEquals(actual_person.get_bmi(),e_bmi)
         self.assertEquals(actual_person.get_income(),e_income)
 
-
     def test_set_validate_too_short(self):
         with mock.patch('builtins.input', return_value='22'):
             input_str = "T109,m,74,861,Normal"
