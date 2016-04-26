@@ -11,8 +11,8 @@ class Editor(object):
     def set_raw(self, new_data):
         self._raw_data = new_data
 
-    def edit_or_delete(self, a_string):
-        i = input("Press 'E' to edit the data, press 'D' to delete it.\n")
+    def edit_or_delete(self, a_string, action):
+        i = action
         if i == 'E' or i == 'e':
             self.validate(a_string)
         elif i == 'D' or i == 'd':

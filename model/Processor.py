@@ -28,7 +28,8 @@ class Processor(object):
             self.editor.set_raw(bad_data)
             for data_string in bad_data:
                 (print("Bad data: \n" + data_string))
-                self.editor.edit_or_delete(data_string)
+                action = input("Press 'E' to edit the data, press 'D' to delete it.\n")
+                self.editor.edit_or_delete(data_string, action)
             print ("All bad data has been handled")
             self.database.add_people(self.editor.export_good_data())
 
