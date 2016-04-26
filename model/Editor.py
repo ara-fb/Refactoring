@@ -53,10 +53,11 @@ class Editor(object):
 
         self._good_data.update({p.get_id(): p})
         self._raw_data.remove(a_string)
+        return p
 
     def set_new_value(self, bad_input, correct_input, value):
-        print("The current " + value + " is: " + bad_input)
-        return input("The correct format is: " + correct_input + "\nSet a new " + value + ":\n")
+        prompt = "The current " + value + " is: " + bad_input + "\nThe correct format is: " + correct_input + "\nSet a new " + value + ":\n"
+        return input(prompt)
 
     def export_good_data(self):
         return self._good_data

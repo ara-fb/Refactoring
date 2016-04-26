@@ -24,8 +24,12 @@ class TestEditFunctionality(unittest.TestCase):
     def test_editor_edit_or_delete(self):
         pass
 
-    def test_set_new_value(self):
-        pass
+    def test_set_validate(self):
+        input_str = "T109,m,74,861,-,22"
+        with mock.patch('simulating_input_demo.input') as mp:
+            mp.return_value = '34'
+            self.processor.editor.validate(input_str)
+            self.assertNotEqual()
 
 
 if __name__ == '__main__':
