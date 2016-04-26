@@ -1,4 +1,4 @@
-from Processor import *
+from model.Processor import *
 
 
 class CmdFunction(object):

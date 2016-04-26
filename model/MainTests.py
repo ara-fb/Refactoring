@@ -1,5 +1,5 @@
 import unittest
-from CmdFunction import *
+from model.CmdFunction import *
 
 
 class MainTests(unittest.TestCase):
