@@ -1,5 +1,5 @@
-from Validator import *
-from Person import *
+from model.Validator import *
+from model.Person import *
 
 
 class Editor(object):
@@ -31,30 +31,20 @@ class Editor(object):
         if the_string in self._raw_data:
             self._raw_data.remove(the_string)
 
+    def __unpack_list(self, a_list, list_index):
+        if len(a_list) > list_index:
+            return a_list[list_index]
+        else:
+            return ""
+
     def validate(self, a_string):
         list_ = Validator.clean_input(a_string)
-
         id_ = list_[0]
-        if len(list_) > 1:
-            gender = list_[1]
-        else:
-            gender = ""
-        if len(list_) > 2:
-            age = list_[2]
-        else:
-            age = ""
-        if len(list_) > 3:
-            sales = list_[3]
-        else:
-            sales = ""
-        if len(list_) > 4:
-            bmi = list_[4]
-        else:
-            bmi = ""
-        if len(list_) > 5:
-            income = list_[5]
-        else:
-            income = ""
+        gender = self.__unpack_list(self, list_, 1)
+        age = self.__unpack_list(self, list_, 2)
+        sales = self.__unpack_list(self, list_, 3)
+        bmi = self.__unpack_list(self, list_, 4)
+        income = self.__unpack_list(self, list_, 5)
 
         while not Validator.has_valid_id(id_):
             id_ = Validator.clean_id(self.set_new_value(id_, "A123", "id"))
