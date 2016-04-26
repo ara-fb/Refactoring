@@ -3,7 +3,6 @@ from model.Person import *
 
 
 class Editor(object):
-    INPUT_PROMPT = "The current {value} is: {bad_input}\nThe correct format is: {correct_input}\nSet a new {value}:\n"
     def __init__(self):
         self._raw_data = None
         self._good_data = {}
@@ -55,8 +54,12 @@ class Editor(object):
         self._raw_data.remove(a_string)
         return p
 
+    def get_request_msg(self, bad, correct, val):
+        prompt = "The current {value} is: {bad_input}\nThe correct format is: {correct_input}\nSet a new {value}:\n"
+        return prompt.format(bad_input=bad, correct_input=correct, value=val)
+
     def request_new_value(self, bad, correct, val):
-        return input(self.INPUT_PROMPT.format(bad_input=bad, correct_input=correct, value=val))
+        return input(self.get_request_msg(bad, correct, val))
 
     def export_good_data(self):
         return self._good_data
