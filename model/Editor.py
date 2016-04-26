@@ -32,22 +32,22 @@ class Editor(object):
         id_, gender, age, sales, bmi, income = self.__unpack_list(list_)
 
         while not Validator.has_valid_id(id_):
-            id_ = Validator.clean_id(self.set_new_value(id_, "A123", "id"))
+            id_ = Validator.clean_id(self.request_new_value(id_, "A123", "id"))
 
         while not Validator.has_valid_gender(gender):
-            gender = Validator.clean_gender(self.set_new_value(gender, "M", "gender"))
+            gender = Validator.clean_gender(self.request_new_value(gender, "M", "gender"))
 
         while not Validator.has_valid_age(age):
-            age = Validator.clean_age(self.set_new_value(age, "01", "age"))
+            age = Validator.clean_age(self.request_new_value(age, "01", "age"))
 
         while not Validator.has_valid_sales(sales):
-            sales = Validator.clean_sales(self.set_new_value(sales, "001", "sales"))
+            sales = Validator.clean_sales(self.request_new_value(sales, "001", "sales"))
 
         while not Validator.has_valid_bmi(bmi):
-            bmi = Validator.clean_bmi(self.set_new_value(bmi, "Normal, Overweight, Obesity, Underweight", "bmi"))
+            bmi = Validator.clean_bmi(self.request_new_value(bmi, "Normal, Overweight, Obesity, Underweight", "bmi"))
 
         while not Validator.has_valid_income(income):
-            income = Validator.clean_income(self.set_new_value(income, "00-100", "income"))
+            income = Validator.clean_income(self.request_new_value(income, "00-100", "income"))
 
         p = Person(Validator.clean_id(id_), Validator.clean_gender(gender), Validator.clean_age(age), Validator.clean_sales(sales), Validator.clean_bmi(bmi), Validator.clean_income(income))
 
@@ -55,7 +55,7 @@ class Editor(object):
         self._raw_data.remove(a_string)
         return p
 
-    def set_new_value(self, bad, correct, val):
+    def request_new_value(self, bad, correct, val):
         return input(self.INPUT_PROMPT.format(bad_input=bad, correct_input=correct, value=val))
 
     def export_good_data(self):

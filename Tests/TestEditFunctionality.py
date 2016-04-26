@@ -16,8 +16,13 @@ class TestEditFunctionality(unittest.TestCase):
         # self.edit_or_delete = editor.edit_or_delete
         # editor.set_new_value = MagicMock()
 
-    def test_editor_edit_or_delete(self):
-        pass
+    def test_editor_request_input_msg(self):
+        bad_in = 'T19'
+        correct_in = 'A123'
+        value = 'id'
+        expected = "The current id is: T19\nThe correct format is: A123\nSet a new id:\n"
+        actual = self.processor.editor.get_request_msg(bad_in, correct_in, value)
+        self.assertEquals(actual,expected)
 
     def test_set_validate_valid_all(self):
         input_str = "T109,m,74,861,Normal,22"
@@ -122,6 +127,9 @@ class TestEditFunctionality(unittest.TestCase):
             self.assertEquals(actual_person.get_sales(),e_sales)
             self.assertEquals(actual_person.get_bmi(),e_bmi)
             self.assertEquals(actual_person.get_income(),e_income)
+
+    def test_editor_edit_or_delete(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()
