@@ -12,10 +12,10 @@ class Editor(object):
         self._raw_data = new_data
 
     def edit_or_delete(self, a_string, action):
-        i = action
-        if i == 'E' or i == 'e':
+        action = action.upper()
+        if action == 'E':
             self.validate(a_string)
-        elif i == 'D' or i == 'd':
+        elif action == 'D':
             self.remove_from_raw(a_string)
 
     def remove_from_raw(self, the_string):
