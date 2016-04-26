@@ -143,6 +143,7 @@ class Validator:
 
         if pattern.match(an_income) is None:
             return False
+
         return True
 
     def isvalid(self, a_list):
