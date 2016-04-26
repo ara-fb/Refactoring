@@ -11,13 +11,6 @@ class Editor(object):
     def set_raw(self, new_data):
         self._raw_data = new_data
 
-    def edit(self):
-        while len(self._raw_data) > 0:
-            s = self._raw_data[0]
-            (print("Bad data: \n" + s))
-            self.edit_or_delete(s)
-        print ("All bad data has been handled")
-
     def edit_or_delete(self, a_string):
         i = input("Press 'E' to edit the data, press 'D' to delete it.\n")
         if i == 'E' or i == 'e':

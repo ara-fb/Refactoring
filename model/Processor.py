@@ -1,7 +1,7 @@
-from FileHandler import *
-from Database import *
-from Editor import *
-from Plotter import *
+from model.FileHandler import *
+from model.Database import *
+from model.Editor import *
+from model.Plotter import *
 
 
 class Processor(object):
@@ -24,8 +24,12 @@ class Processor(object):
 
     def process_bad(self):
         if self.validator.has_bad_data():
-            self.editor.set_raw(self.validator.export_bad_data())
-            self.editor.edit()
+            bad_data = self.validator.export_bad_data()
+            self.editor.set_raw(bad_data)
+            for data_string in bad_data:
+                (print("Bad data: \n" + data_string))
+                self.editor.edit_or_delete(data_string)
+            print ("All bad data has been handled")
             self.database.add_people(self.editor.export_good_data())
 
     def set_file_path(self, new_path):
