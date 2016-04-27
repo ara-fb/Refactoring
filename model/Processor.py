@@ -1,7 +1,7 @@
-from FileHandler import *
-from Database import *
-from Editor import *
-from Plotter import *
+from model.FileHandler import *
+from model.Database import *
+from model.Editor import *
+from model.Plotter import *
 
 
 class Processor(object):
@@ -24,9 +24,22 @@ class Processor(object):
 
     def process_bad(self):
         if self.validator.has_bad_data():
-            self.editor.set_raw(self.validator.export_bad_data())
-            self.editor.edit()
+            bad_data = self.validator.export_bad_data()
+            self.editor.set_raw(bad_data)
+            for data_string in bad_data:
+                (print("Bad data: \n" + data_string))
+                action = self.prompt_recursively_for_input()
+                self.editor.edit_or_delete(data_string, action)
+            print ("All bad data has been handled")
             self.database.add_people(self.editor.export_good_data())
+
+    def prompt_recursively_for_input(self):
+        action = input("Press 'E' to edit the data, press 'D' to delete it.\n")
+        action = action.upper()
+        if action == 'E' or'D':
+            return action
+        else:
+            return self.prompt_recursively_for_input()
 
     def set_file_path(self, new_path):
         self.database.set_directory(new_path)

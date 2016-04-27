@@ -1,5 +1,5 @@
 import cmd
-from CmdFunction import *
+from model.CmdFunction import *
 import doctest
 
 
