@@ -35,6 +35,10 @@ class Validator:
     def has_bad_data(self):
         return len(self.__bad_data) > 0
 
+    # for testing
+    def add_bad_data(self, bad_data):
+        self.__bad_data = bad_data
+
     ###
         # clean methods
 

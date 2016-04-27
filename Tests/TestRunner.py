@@ -1,16 +1,18 @@
-from TestValidatorClean import *
-from TestValidatorHasValidAge import *
-from TestValidatorHasValidBmi import *
-from TestValidatorHasValidGender import *
-from TestValidatorHasValidId import *
-from TestValidatorHasValidIncome import *
-from TestValidatorHasValidSales import *
+from Tests.TestValidatorClean import *
+from Tests.TestValidatorHasValidAge import *
+from Tests.TestValidatorHasValidBmi import *
+from Tests.TestValidatorHasValidGender import *
+from Tests.TestValidatorHasValidId import *
+from Tests.TestValidatorHasValidIncome import *
+from Tests.TestValidatorHasValidSales import *
+from Tests.TestEditFunctionality import *
 
 import unittest
 
 
 def my_suite():
     the_suite = unittest.TestSuite()
+    the_suite.addTest(unittest.makeSuite(TestEditFunctionality))
     the_suite.addTest(unittest.makeSuite(TestValidatorClean))
     the_suite.addTest(unittest.makeSuite(TestValidatorHasValidAge))
     the_suite.addTest(unittest.makeSuite(TestValidatorHasValidBmi))
