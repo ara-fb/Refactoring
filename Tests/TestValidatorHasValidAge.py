@@ -1,6 +1,7 @@
 import unittest
 from model.Validator import Validator
 
+
 class TestValidatorHasValidAge(unittest.TestCase):
 
     def setUp(self):

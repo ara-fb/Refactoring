@@ -2,7 +2,7 @@ import unittest
 from model.Validator import Validator
 
 
-class TestValidatorCleanUnitTests(unittest.TestCase):
+class TestValidatorClean(unittest.TestCase):
 
     def setUp(self):
         self.validator = Validator()

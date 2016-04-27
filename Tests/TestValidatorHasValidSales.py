@@ -2,7 +2,7 @@ import unittest
 from model.Validator import Validator
 
 
-class MyTestCase(unittest.TestCase):
+class TestValidatorHasValidSales(unittest.TestCase):
     def setUp(self):
         self.validator = Validator()
 
